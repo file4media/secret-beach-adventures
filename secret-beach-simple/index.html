@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Beach Adventures | Discover Belize's Hidden Paradise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+        
+        .cta-button {
+            background: #f97316;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #ea580c;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%2306b6d4" width="1200" height="800"/><text x="600" y="400" text-anchor="middle" fill="white" font-size="48" font-family="Arial">Secret Beach Paradise</text></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .hero-content .highlight {
+            color: #fbbf24;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .hero-button {
+            background: #f97316;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .hero-button:hover {
+            background: #ea580c;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #06b6d4, #0891b2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .badge-breaking {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .badge-development {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+        
+        .badge-investment {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-text {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .card-link {
+            color: #2563eb;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .bg-gray {
+            background: #f9fafb;
+        }
+        
+        .bg-blue {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .signup-section {
+            text-align: center;
+        }
+        
+        .signup-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .signup-section p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+        
+        .signup-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .signup-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .signup-button {
+            background: #f97316;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .signup-button:hover {
+            background: #ea580c;
+        }
+        
+        .signup-note {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 1rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .signup-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Secret Beach Adventures</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#transportation">Transportation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#signup" class="cta-button">Free Guide</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover Belize's<br><span class="highlight">Hidden Paradise</span></h1>
+            <p>Your insider guide to Belize's transforming paradise - from infrastructure upgrades to luxury developments and hidden gems</p>
+            <button class="hero-button" onclick="scrollToSignup()">Get Free Guide</button>
+        </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section id="news" class="section bg-gray">
+        <div class="container">
+            <h2 class="section-title">Latest Secret Beach News</h2>
+            <p class="section-subtitle">Stay updated with the latest developments and events</p>
+            
+            <div class="grid">
+                <div class="card" onclick="showNewsDetail('news1')">
+                    <div class="card-image">Six Senses Resort</div>
+                    <div class="card-content">
+                        <span class="card-badge badge-breaking">BREAKING</span>
+                        <h3 class="card-title">Six Senses Luxury Resort Opening at Secret Beach</h3>
+                        <p class="card-text">Major luxury development with 45 resort villas and 24 overwater residences opening mid-2025.</p>
+                        <a href="#" class="card-link">Click to read more →</a>
+                    </div>
+                </div>
+
+                <div class="card" onclick="showNewsDetail('news2')">
+                    <div class="card-image">Infrastructure</div>
+                    <div class="card-content">
+                        <span class="card-badge badge-development">DEVELOPMENT</span>
+                        <h3 class="card-title">Major Infrastructure Improvements Announced</h3>
+                        <p class="card-text">Ministry of Tourism announces infrastructural improvements coming to Secret Beach.</p>
+                        <a href="#" class="card-link">Click to read more →</a>
+                    </div>
+                </div>
+
+                <div class="card" onclick="showNewsDetail('news3')">
+                    <div class="card-image">Real Estate</div>
+                    <div class="card-content">
+                        <span class="card-badge badge-investment">INVESTMENT</span>
+                        <h3 class="card-title">Secret Beach Real Estate Boom Continues</h3>
+                        <p class="card-text">New condo construction underway with Turquoise Seas development.</p>
+                        <a href="#" class="card-link">Click to read more →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Insights Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Latest Secret Beach Insights</h2>
+            <p class="section-subtitle">Fresh tips, guides, and insider secrets from Secret Beach</p>
+            
+            <div class="grid">
+                <div class="card" onclick="showInsightDetail('insight1')">
+                    <div class="card-image">Infrastructure Upgrades</div>
+                    <div class="card-content">
+                        <span class="card-badge badge-breaking">Breaking News</span>
+                        <h3 class="card-title">Major Infrastructure Upgrades Coming to Secret Beach</h3>
+                        <p class="card-text">Belize government announces comprehensive infrastructure improvements including electricity, water, and zoning regulations.</p>
+                        <div style="font-size: 0.875rem; color: #666; margin-top: 1rem;">
+                            <span>4 min read</span> • <span>July 31, 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="showInsightDetail('insight2')">
+                    <div class="card-image">Real Estate Market</div>
+                    <div class="card-content">
+                        <span class="card-badge badge-investment">Real Estate</span>
+                        <h3 class="card-title">Secret Beach Real Estate Boom: $675K Beachfront Property Listed</h3>
+                        <p class="card-text">Premium 2.4-acre beachfront property with 200 feet of Caribbean Sea frontage highlights growing investment interest.</p>
+                        <div style="font-size: 0.875rem; color: #666; margin-top: 1rem;">
+                            <span>6 min read</span> • <span>July 29, 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="showInsightDetail('insight3')">
+                    <div class="card-image">Luxury Travel</div>
+                    <div class="card-content">
+                        <span class="card-badge" style="background: #f3e8ff; color: #7c3aed;">Luxury Travel</span>
+                        <h3 class="card-title">Six Senses Belize Resort Opening Mid-2025 at Secret Beach</h3>
+                        <p class="card-text">New luxury resort with 45 accommodations set to transform Secret Beach into premier Caribbean destination.</p>
+                        <div style="font-size: 0.875rem; color: #666; margin-top: 1rem;">
+                            <span>5 min read</span> • <span>July 28, 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transportation Section -->
+    <section id="transportation" class="section bg-gray">
+        <div class="container">
+            <h2 class="section-title">Transportation Directory</h2>
+            <p class="section-subtitle">Complete guide to getting around Secret Beach and Ambergris Caye</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title" style="color: #2563eb;">Golf Cart Taxis</h3>
+                        <p class="card-text">The primary mode of transportation on Ambergris Caye</p>
+                        <div style="margin-top: 1rem;">
+                            <div style="border-bottom: 1px solid #eee; padding-bottom: 1rem; margin-bottom: 1rem;">
+                                <h4 style="font-weight: 600;">Secret Beach Golf Cart Rentals</h4>
+                                <p style="color: #666; font-size: 0.875rem;">📞 +501-226-4444 | 💰 $50-80/day</p>
+                            </div>
+                            <div style="border-bottom: 1px solid #eee; padding-bottom: 1rem; margin-bottom: 1rem;">
+                                <h4 style="font-weight: 600;">Island Time Golf Carts</h4>
+                                <p style="color: #666; font-size: 0.875rem;">📞 +501-226-5555 | 💰 $60-90/day</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title" style="color: #2563eb;">Water Taxis</h3>
+                        <p class="card-text">Transportation to and from the mainland</p>
+                        <div style="margin-top: 1rem;">
+                            <div style="border-bottom: 1px solid #eee; padding-bottom: 1rem; margin-bottom: 1rem;">
+                                <h4 style="font-weight: 600;">San Pedro Water Taxi</h4>
+                                <p style="color: #666; font-size: 0.875rem;">📞 +501-226-2194 | 💰 $25-35 one way</p>
+                            </div>
+                            <div style="border-bottom: 1px solid #eee; padding-bottom: 1rem; margin-bottom: 1rem;">
+                                <h4 style="font-weight: 600;">Ocean Ferry Belize</h4>
+                                <p style="color: #666; font-size: 0.875rem;">📞 +501-223-0033 | 💰 $30-40 one way</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section">
+        <div class="container">
+            <h2 class="section-title">Secret Beach Blog</h2>
+            <p class="section-subtitle">Your complete guide to Secret Beach adventures, tips, and insider secrets</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-image">Complete Guide</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Complete Secret Beach Travel Guide 2025</h3>
+                        <p class="card-text">Everything you need to know about visiting Secret Beach, from transportation to accommodations, activities, and insider tips.</p>
+                        <div style="font-size: 0.875rem; color: #666; margin: 1rem 0;">
+                            <span>15 min read</span> • <span>Updated February 2025</span>
+                        </div>
+                        <a href="#" class="card-link">Read Complete Guide →</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">Best Time to Visit</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Best Time to Visit Secret Beach: Weather & Seasonal Guide</h3>
+                        <p class="card-text">Discover the optimal times to visit Secret Beach based on weather patterns, crowd levels, and seasonal activities.</p>
+                        <div style="font-size: 0.875rem; color: #666; margin: 1rem 0;">
+                            <span>8 min read</span> • <span>January 2025</span>
+                        </div>
+                        <a href="#" class="card-link">Read Weather Guide →</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">Accommodations</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Secret Beach Accommodation Guide: Where to Stay</h3>
+                        <p class="card-text">From luxury resorts to budget-friendly options, find the perfect place to stay at Secret Beach.</p>
+                        <div style="font-size: 0.875rem; color: #666; margin: 1rem 0;">
+                            <span>12 min read</span> • <span>January 2025</span>
+                        </div>
+                        <a href="#" class="card-link">Read Accommodation Guide →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Signup Section -->
+    <section id="signup" class="section bg-blue">
+        <div class="container signup-section">
+            <h2>Never Miss a Secret Beach Update</h2>
+            <p>Get weekly insider tips, new guides, and exclusive deals delivered to your inbox</p>
+            <div class="signup-form">
+                <input type="email" class="signup-input" placeholder="Enter your email" required>
+                <button class="signup-button" onclick="handleSignup()">Subscribe Free</button>
+            </div>
+            <p class="signup-note">Join 5,000+ travelers • Unsubscribe anytime • No spam, ever</p>
+        </div>
+    </section>
+
+    <script>
+        function scrollToSignup() {
+            document.getElementById('signup').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleSignup() {
+            const email = document.querySelector('.signup-input').value;
+            if (email) {
+                alert('Thank you for subscribing! Check your email for the free Secret Beach guide.');
+                document.querySelector('.signup-input').value = '';
+            } else {
+                alert('Please enter your email address.');
+            }
+        }
+
+        function showNewsDetail(newsId) {
+            const newsDetails = {
+                news1: {
+                    title: "Six Senses Luxury Resort Opening at Secret Beach",
+                    content: "In a groundbreaking development for Secret Beach, the world-renowned Six Senses hospitality group has announced the opening of their newest luxury resort, scheduled for mid-2025. This marks a significant milestone in Secret Beach's transformation into a premier Caribbean destination.\n\nThe resort will feature 45 luxury accommodations, including 21 beachfront villas and 24 overwater residences, each designed with sustainable materials and cutting-edge eco-friendly technology. The development represents a $120 million investment in the Secret Beach area.\n\nKey features include a signature Six Senses spa, wellness village, private island access, and multiple dining venues showcasing local Belizean cuisine alongside international offerings."
+                },
+                news2: {
+                    title: "Major Infrastructure Improvements Announced",
+                    content: "The Belize Ministry of Tourism has announced a comprehensive infrastructure improvement plan for Secret Beach, addressing long-standing concerns about accessibility and utilities.\n\nThe $15 million project includes road improvements, a new gas station, enhanced electrical grid, and improved water systems. Construction is expected to begin in March 2025 and complete by December 2025.\n\nThese improvements will significantly enhance the visitor experience while supporting sustainable tourism development in the area."
+                },
+                news3: {
+                    title: "Secret Beach Real Estate Boom Continues",
+                    content: "New condo construction is underway with the Turquoise Seas development, featuring 24 luxury units with direct beach access. The project represents growing investor confidence in Secret Beach's future.\n\nA 0.72-acre beachfront parcel has been listed for $650,000, highlighting the rapidly appreciating market values in the area. Real estate experts predict continued growth as infrastructure improvements progress.\n\nThe development boom is attracting international investors and positioning Secret Beach as a premier Caribbean real estate market."
+                }
+            };
+
+            const detail = newsDetails[newsId];
+            if (detail) {
+                alert(`${detail.title}\n\n${detail.content}`);
+            }
+        }
+
+        function showInsightDetail(insightId) {
+            const insightDetails = {
+                insight1: {
+                    title: "Major Infrastructure Upgrades Coming to Secret Beach",
+                    content: "The Belize government has announced comprehensive infrastructure improvements for Secret Beach, including electricity upgrades, water system enhancements, and new zoning regulations that will support sustainable tourism development.\n\nThese improvements are expected to significantly enhance the visitor experience while preserving the natural beauty that makes Secret Beach special. The project timeline spans 18 months with completion expected by late 2026.\n\nKey improvements include: reliable electricity grid, potable water systems, waste management infrastructure, and regulated development zones to maintain the area's pristine character."
+                },
+                insight2: {
+                    title: "Secret Beach Real Estate Boom: $675K Beachfront Property Listed",
+                    content: "A premium 2.4-acre beachfront property with 200 feet of Caribbean Sea frontage has been listed for $675,000, highlighting the growing investment interest in Secret Beach real estate.\n\nThe property features pristine beachfront access, mature coconut palms, and development potential for luxury accommodations. This listing represents the increasing value of Secret Beach real estate as infrastructure improvements continue.\n\nReal estate experts predict continued appreciation as the area develops, making now an optimal time for investment before prices increase further with completed infrastructure projects."
+                },
+                insight3: {
+                    title: "Six Senses Belize Resort Opening Mid-2025 at Secret Beach",
+                    content: "New luxury resort with 45 accommodations set to transform Secret Beach into premier Caribbean destination. The Six Senses brand brings world-class hospitality standards to this pristine location.\n\nThe resort will feature overwater villas, beachfront suites, a signature spa, multiple dining venues, and exclusive access to pristine reef systems for snorkeling and diving.\n\nThis development signals Secret Beach's emergence as a luxury destination while maintaining its commitment to sustainable tourism and environmental preservation."
+                }
+            };
+
+            const detail = insightDetails[insightId];
+            if (detail) {
+                alert(`${detail.title}\n\n${detail.content}`);
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
